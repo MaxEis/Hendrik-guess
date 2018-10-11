@@ -2,21 +2,21 @@ var c = document.getElementById("canvas");
 var ctx = c.getContext("2d");
 
 
-var rect = Math.ceil(Math.random()*50);
-console.log(rect)
+var rect = Math.ceil(Math.random()*20);
+var arc = Math.ceil(Math.random()*13);
+console.log("rect" + rect);
+console.log("arc"+ arc);
 
 document.getElementById("btn").onclick = function() {checkresult()};
 
 function checkresult(){
-	var guess = document.getElementById("txt_name").value;
-	console.log(guess);
-	if(guess == rect){
-		alert("100% richtig");
+	var guessr = document.getElementById("rect").value;
+	var guess = document.getElementById("arc").value;
+	if(guess  == arc && guessr == rect){
+		alert("Du bist eine MASCHINE komplett richtig hier 500$");
 	}else{
-		var wrong = guess/rect;
-		alert("Falsch! Richtig wäre:" + rect);
+		alert("Komplett falsch !!!" + "Rect= " + rect + "Kreise" + arc);
 	}
-	
 	
 }
 
@@ -29,6 +29,18 @@ while(i<rect){
 	ctx.stroke();
 	
 	i++;
+}
+var ii = 0;
+while(ii<arc){
+	var x = Math.ceil(Math.random()*200)+50;
+	var y = Math.ceil(Math.random()*200)+50;
+	
+
+	ctx.beginPath();
+	ctx.arc(x,y,50,0,2*Math.PI);	
+	ctx.stroke();
+	
+	ii++;
 }
 
 
